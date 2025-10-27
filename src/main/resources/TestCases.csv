@@ -1,0 +1,200 @@
+TESTCASE ID,OBJECTIVE,TEST DATA,STEPS,EXPECTED RESULTS,AUT-ID
+TC-101,To verify valid login details,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password},"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.",User should login to the application.,
+TC-102,To verify whether the check-out date field accepts a later date than check-in date.,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel creek; Room type: standard; No-of-rooms:1; Check-in-date: today + 7 date; Checkout date: today+5 date,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-in-date later than the check-out-date field as in test data.
+8. Verify that system gives an error saying 'check-in-date should not be later than check-out-date'",System should report an error message.,
+TC-103,To check if error is displayed when check-in date field is in the past,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: Hotel Creek; Room type: standard; No-of-rooms:1; Check-in-date: today's -5 date; Checkout date: today's -3 date,"1. Launch hotel reservation application.
+2. Login to the application using Username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Verify that application throws error message.",System should report an error.,
+TC-104,To verify whether locations in Select Hotel page are displayed according to the location selected in Search Hotel,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:1; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Verify that hotel displayed is the same as selected in search Hotel form.",Location displayed in Select Hotel should be the same as location selected in search hotel form.,
+TC-105,To verify date and Check Out date are being displayed in Select Hotel Page according to the dates selected in search Hotel.,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:1; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Verify that check-in-date and check-out-dates are the same as selected in search hotel form.",Check-in-date displayed according to the data entered in search hotel form.,
+TC-106,To verify whether no. of rooms entry in Select Hotel page is same as the Number of rooms selected in search hotel page,URL: http://adactinhotelapp.com/; User:{test Username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:3; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on search button.
+11. Verify that no. of rooms reflected according to the no. of rooms selected in search hotel page.",No-of-rooms number of rooms in search hotel page.,
+TC-107,To verify whether Room Type in Select Hotel page is same as Room type selected in search hotel page,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: Deluxe; No-of-rooms:1; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Verify that room type reflected is the same as selected in search hotel page.",Room type displayed should be the same as selected in search hotel page.,
+TC-108,"To verify whether the total price (excl.GST) is calculated as ""price per night * no. of nights* no of rooms"".",URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room-type as in test data.
+6. Select no of rooms as in test data.
+7. Enter check out date as in test data.
+8. Select no of adults as in test data.
+9. Select no. of children as in test data.
+10. Click on search button.
+11. Select the hotel and click on continue button.
+12. Verify the total price(excl GST) is being calculated as (price-per-night*no-of-rooms*no-of-days).",Total price should be calculated as price per nights * no. of nights * no. of rooms.,
+TC-109,"To verify when pressed, logout button logs out from the application.",URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: Standard; No-of-rooms:2; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Enter the details and click on book now.
+13. Check the details, click on logout and verify if we have logged out from the application.",User should be able to logout from the application.,
+TC-110,"To check correct total price is Being Calculated as ""price per night*no of rooms*no-of-days in Book a hotel Page",URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Melbourne; Hotel: hotel Creek; Room type: standard; No-of-rooms:2; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel reservation application as in URL test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Verify that total-price is being calculated as (price-per-night*no-of-rooms*no-of-days +10% GST).",Total-price should be calculated as (price-per-night*no-of-nights*no of rooms*no-of-days). Total Price= $125*2*1= $250. In book a hotel page.,
+TC-111,"To check Hotel name, Location, room type, Total Day, price per day are same as selected in previous screen",URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:2; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select Hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Verify that total-price is being calculated as (price-per-night*no-of-rooms*no-of-days).",Data should be same as selected in previous screen.,
+TC-112,To check correct Final billed price is Total Price + 10% Total price in Book a Hotel page,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:2; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children:0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select Hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Verify that total-price is being calculated as (price-per-night*no-of-rooms*no-of-days).",Final billed $Price=125+12.5=137.5$ in Book a Hotel page.,
+TC-113,To verify whether the data displayed is same as the selected data in Book a hotel page,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: standard; No-of-rooms:2; Check-in-date: today's date; Checkoutdate:today+1 date; No-of-adults: 1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select Hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Verify that total-price is being calculated as (price-per-night*no-of-rooms*no-of-days).",Hotel: hotel Creek; Room type: Standard; No-of-rooms:2; Check-in-date:27/07/2012; Checkoutdate 28/07/2012; No-of-adults: 1; No-of-children: 0,
+TC-114,Verify Order number is generated in booking confirmation page,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password},"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check-out date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Verify that total-price is being calculated as (price-per-night*no-of-rooms*no-of-days).",ORDER no should be generated.,
+TC-115,To verify whether the booked itinerary details are not editable.,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Adelaide; Hotel: hotel Cornice; Room type: standard; No-of-rooms:2; Check-in-date: today’s date; Checkoutdate:today+1 date; No-of-adults:1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select Hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Fill the form and click on Book now button.
+13. Click on My itinerary button.
+14. Verify that the details are not editable.",User should not be able to edit the booked itinerary.,
+TC-116,To check whether the booked itinerary reflects the correct information in line with the booking.,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: Standard; No-of-rooms:2; Check-in-date: today’s date; Checkoutdate:today+1 date; No-of-adults:1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Select location as in test data.
+4. Select hotel as in test data.
+5. Select room type as in test data.
+6. Select no-of-rooms as in test data.
+7. Enter check out-date as in test data.
+8. Select No-of-adults as in test data.
+9. Select No-of-children as in test data.
+10. Click on Search button.
+11. Select the hotel and click on continue button.
+12. Fill the form and click on Book now button.
+13. Click on My itinerary button.
+14. Verify that the details are reflected correctly as per the booking.",Information in line with the booking.,
+TC-117,To check whether search order id query is working and displaying the relevant details,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Order id: pick existing order id,"1. Launch application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Click on booked itinerary button.
+4. Enter the order id.
+5. Verify that the relevant details are displayed.",Display the relevant details for Order ID.,
+TC-118,Verify all the details of newly generated order number in booked itinerary page are correct and match with data during booking.,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password}; Location: Sydney; Hotel: hotel Creek; Room type: Standard; No-of-rooms:2; Check-in-date: today’s date; Checkoutdate:today+1 date; No-of-adults:1; No-of-children: 0,"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Book an order as in previous test cases.
+4. Click on booked itinerary button.
+5. Search for Order number.
+6. Verify all the details of order number are correct as entered during saving order.",Same as those entered during booking.,
+TC-119,To verify that the order gets cancelled after click on Cancel order number link,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password},"1. Launch hotel reservation application using URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Book the Hotel as in previous test cases. Keep a note of order number generated.
+4. Click on Booked Itinerary.
+5. Search for order number booked.
+6. Click on Cancel<Order Number>.
+7. Click Yes on pop-up which asks whether to cancel order or not.
+8. Verify that order number is cancelled and no longer exists in Booked Itinerary page.",Order number should not be present in booked itinerary page after cancellation.,
+TC-120,To verify Title of every Page reflects what the page objective is. For example Title of Search Hotel page should have “Search Hotel”,URL: http://adactinhotelapp.com/; User:{test username}; Password:{test password},"1. Launch the URL as in test data.
+2. Login to the application using username and password as in test data.
+3. Verify that title of each page is the same as the page objective.
+4. Click on Search hotel option and verify whether application directs to search hotel form.
+5. Click on booked itinerary button and verify that application directs to booked itinerary form.","Title of each page should reflect its objective and the buttons should redirect as specified, to the relevant page.",

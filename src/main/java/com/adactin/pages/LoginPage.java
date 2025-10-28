@@ -17,6 +17,7 @@ public class LoginPage {
 	
 	 public LoginPage(WebDriver driver) {
 		 this.driver=driver;
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	 }
 	
 //	public boolean Logo() {
@@ -26,22 +27,16 @@ public class LoginPage {
 //		}
 //		return logo.isDisplayed();
 //	}
-	
-	public String login() throws IOException {
-		
-		Properties prop = ConfigReader.getPropertyObject();
-	    String USERNAME = prop.getProperty("USERNAME");
-	    String PASSWORD = prop.getProperty("PASSWORD");
-		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		WebElement username =driver.findElement(By.xpath("//input[@id='username']"));
-		username.sendKeys(USERNAME);
-		WebElement password =driver.findElement(By.xpath("//input[@id='password']"));
-		password.sendKeys(PASSWORD);
-		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login']"));
-		loginbutton.click();
-		String pageTitle=driver.getTitle();
-		return pageTitle;
+	public WebElement getUsernameField() {
+			WebElement usernameField =driver.findElement(By.xpath("//input[@id='username']"));
+			return usernameField;
 	}
-	
+	public WebElement getPasswordField() {
+		WebElement passwordField =driver.findElement(By.xpath("//input[@id='password']"));
+		return passwordField;
+	}
+	public WebElement getLoginButton() {
+		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login']"));
+		return loginbutton;
+	}	
 }

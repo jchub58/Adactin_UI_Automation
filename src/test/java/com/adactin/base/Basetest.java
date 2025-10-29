@@ -24,7 +24,7 @@ public class Basetest {
 		driver.manage().window().maximize();
 		driver.get(url);
 	}
-	
+
 	@AfterMethod
 	public void quitbrowser() {
 		driver.quit();

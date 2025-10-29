@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class LogoutPage {
 	private WebDriver driver;
-	LoginPage loginpage;
+	
 	public LogoutPage (WebDriver driver) {
 		this.driver=driver;
 	}

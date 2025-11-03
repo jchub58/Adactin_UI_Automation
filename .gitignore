@@ -1,0 +1,24 @@
+
+target/
+
+# TestNG output
+test-output/
+allure-results/
+
+# Eclipse files
+.settings/
+*.classpath
+*.project
+*.launch
+*.log
+bin/
+
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+.env
+Config.properties

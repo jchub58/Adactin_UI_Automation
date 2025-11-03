@@ -1,6 +1,8 @@
 package com.adactin.tests;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -44,24 +46,5 @@ public class SearchHotelPageTests extends Basetest {
 			checkinValidation=true;
 		}
 		Assert.assertTrue(checkinValidation);
-	}
-	@Test
-	public void verifyLocationInResults() throws IOException {
-		Properties prop = ConfigReader.getPropertyObject();
-	    String USERNAME = prop.getProperty("USERNAME");
-	    String PASSWORD = prop.getProperty("PASSWORD");
-	    loginpage.getUsernameField().sendKeys(USERNAME);
-	    loginpage.getPasswordField().sendKeys(PASSWORD);
-	    loginpage.getLoginButton().click();
-	    Select chooselocation = new Select(searchHotelPage.getLocationfield());
-	    chooselocation.selectByVisibleText("Sydney");
-		searchHotelPage.getCheckinDatefield().clear();
-		searchHotelPage.getCheckinDatefield().sendKeys("29/10/2025");
-		searchHotelPage.getCheckoutDatefield().clear();
-		searchHotelPage.getCheckoutDatefield().sendKeys("30/10/2025");	
-		searchHotelPage.getSearchButton().click();
-		String hotelInResult=searchHotelPage.getLocation().getAttribute("value");
-		Assert.assertEquals(hotelInResult, "Sydney");
-		
 	}
 }

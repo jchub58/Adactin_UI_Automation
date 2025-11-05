@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Start') {
+            steps {
+                git branch: 'master', url: 'https://github.com/jchub58/Adactin_UI_Automation.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat "mvn clean compile"
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat "mvn test"
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                bat "mvn allure:report"
+            }
+        }
+
+        stage('Publish Allure Report in Jenkins') {
+            steps {
+                allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS'
+            }
+        }
+    }
+
+    post {
+        success {
+            emailext (
+                subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Hi Team,<br><br>Build SUCCESS.<br><br>Allure Report: ${env.BUILD_URL}/allure/<br><br>Regards,<br>Jenkins",
+                to: $DEFAULT_RECIPIENTS,
+                mimeType: 'text/html'
+            )
+        }
+
+        failure {
+            emailext (
+                subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Hi Team,<br><br>Build FAILED.<br><br>Please check console output: ${env.BUILD_URL}<br><br>Regards,<br>Jenkins",
+                to: $DEFAULT_RECIPIENTS,
+                mimeType: 'text/html'
+            )
+        }
+    }
+}

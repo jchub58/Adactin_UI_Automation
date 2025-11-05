@@ -48,14 +48,15 @@ public class searchResultsTests extends Basetest {
 		searchHotelPage.getCheckinDatefield().sendKeys(checkinDate);
 		searchHotelPage.getCheckoutDatefield().clear();
 		searchHotelPage.getCheckoutDatefield().sendKeys(checkOutDate);	
-		searchHotelPage.getSearchButton().click();
 		Select chooseRooms= new Select(searchHotelPage.getNumberofRoomsfield());
 		String roomsWanted="2";
-		chooseRooms.selectByValue(roomsWanted);
+		chooseRooms.selectByVisibleText(roomsWanted);
+		searchHotelPage.getSearchButton().click();
+		
 	
 		Assert.assertEquals(searchResultsPage.getLocationField().getAttribute("value"), locationWanted);
 		Assert.assertEquals(searchResultsPage.getArrivalDateField().getAttribute("value"), checkinDate);
 		Assert.assertEquals(searchResultsPage.getDepartureDateField().getAttribute("value"), checkOutDate);
-		Assert.assertTrue(searchResultsPage.getRoomsField().getAttribute("value").contains(roomsWanted),"Contains " + roomsWanted+" Rooms");
+		Assert.assertTrue(searchResultsPage.getRoomsField().getAttribute("value").contains(roomsWanted));
 	}
 }

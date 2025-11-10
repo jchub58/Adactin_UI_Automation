@@ -37,8 +37,12 @@ public class SearchResultsPage {
 		WebElement pricePerNight=driver.findElement(By.xpath("//input[@id='price_night_1']"));
 		return pricePerNight;
 	}public WebElement getTotalPriceField() {
-	WebElement totalPrice=driver.findElement(By.xpath("//input[@id='total_price_1']"));
+		WebElement totalPrice=driver.findElement(By.xpath("//input[@id='total_price_1']"));
 	return totalPrice;
+	}public WebElement getradioButton() {
+		return driver.findElement(By.xpath("//input[@id='radiobutton_1']"));
+	}public WebElement getContinueButton() {
+		return driver.findElement(By.xpath("//input[@id='continue']"));
 	}
 }
 

@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.adactin.base.Basetest;
+import com.adactin.flows.HotelBookingFlow;
 import com.adactin.pages.LoginPage;
 import com.adactin.pages.SearchHotelPage;
 import com.adactin.pages.SearchResultsPage;
@@ -18,45 +19,40 @@ import com.adactin.utils.ConfigReader;
 
 public class searchResultsTests extends Basetest {
 	SearchResultsPage searchResultsPage;
-	LoginPage loginPage;
-	SearchHotelPage searchHotelPage;
+	HotelBookingFlow hotelBookingFlow;
 	
 	@BeforeMethod
 	public void pageContext() {
 		searchResultsPage=new SearchResultsPage(driver);
-		loginPage=new LoginPage(driver);
-		searchHotelPage=new SearchHotelPage(driver);
+		hotelBookingFlow =new HotelBookingFlow(driver);
 	}
 
 	@Test
-	public void vrerifySearchResults() throws IOException {
-		Properties prop = ConfigReader.getPropertyObject();
-	    String USERNAME = prop.getProperty("USERNAME");
-	    String PASSWORD = prop.getProperty("PASSWORD");
-	    loginPage.getUsernameField().sendKeys(USERNAME);
-	    loginPage.getPasswordField().sendKeys(PASSWORD);
-	    loginPage.getLoginButton().click();
-	    
-	    Select chooselocation = new Select(searchHotelPage.getLocationfield());
-	    String locationWanted="Sydney";
-	    chooselocation.selectByValue(locationWanted);
-		searchHotelPage.getCheckinDatefield().clear();
+	public void vrerifySearchResults() throws IOException, InterruptedException {
+		
 		LocalDate today = LocalDate.now();
-		LocalDate futureDate = LocalDate.now().plusDays(7);
+	    int totalCheckinDays = 7;
+	    String locationWanted="Sydney";
+	    String roomsWanted="2";
+	    String roomType = "Standard";
+	   
+		LocalDate futureDate = LocalDate.now().plusDays(totalCheckinDays);
 		String checkinDate=today.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		String checkOutDate=futureDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		searchHotelPage.getCheckinDatefield().sendKeys(checkinDate);
-		searchHotelPage.getCheckoutDatefield().clear();
-		searchHotelPage.getCheckoutDatefield().sendKeys(checkOutDate);	
-		Select chooseRooms= new Select(searchHotelPage.getNumberofRoomsfield());
-		String roomsWanted="2";
-		chooseRooms.selectByVisibleText(roomsWanted);
-		searchHotelPage.getSearchButton().click();
-		
+	    
+		hotelBookingFlow.login();
+		hotelBookingFlow.searchHotel(locationWanted, roomsWanted, roomType, checkinDate, checkOutDate, totalCheckinDays);
+
+		String pricePerNight = searchResultsPage.getPricePerNightField().getAttribute("value");
+		String[] parts = pricePerNight.split(" ");
+		int amount = Integer.parseInt(parts[2]);
+		int totalAmount =(totalCheckinDays*amount*Integer.parseInt(roomsWanted));
 	
 		Assert.assertEquals(searchResultsPage.getLocationField().getAttribute("value"), locationWanted);
 		Assert.assertEquals(searchResultsPage.getArrivalDateField().getAttribute("value"), checkinDate);
 		Assert.assertEquals(searchResultsPage.getDepartureDateField().getAttribute("value"), checkOutDate);
 		Assert.assertTrue(searchResultsPage.getRoomsField().getAttribute("value").contains(roomsWanted));
+		Assert.assertEquals(searchResultsPage.getRoomTypeField().getAttribute("value"), roomType);
+		Assert.assertEquals(searchResultsPage.getTotalPriceField().getAttribute("value"),"AUD"+" "+"$"+" "+totalAmount);
 	}
 }
